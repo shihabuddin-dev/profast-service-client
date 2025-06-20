@@ -8,15 +8,16 @@ const Button = ({
   className = "",
   ...props
 }) => {
-  let styles =
-    "px-4 py-1.5 rounded font-medium transition duration-200 focus:outline-none ";
+  let styles = "text-sm hover:bg-gray-50 transition";
 
   if (variant === "primary") {
-    styles += "bg-[#3C65F5] text-white";
+    styles +=
+      "border border-gray-300 bg-white text-gray-800 rounded-lg px-6 py-2";
   } else if (variant === "secondary") {
-    styles += "bg-white bg-[#3C65F5]";
+    styles +=
+      "flex items-center bg-lime-200 text-gray-900 rounded-lg px-5 py-2 gap-2 shadow-none hover:bg-lime-300";
   } else if (variant === "outline") {
-    styles += "border border-[#3C65F5] text-[#3C65F5] hover:bg-indigo-50";
+    styles += "";
   } else if (variant === "danger") {
     styles += "bg-red-600 text-white hover:bg-red-500";
   } else {
