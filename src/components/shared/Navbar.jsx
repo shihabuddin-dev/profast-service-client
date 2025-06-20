@@ -1,7 +1,10 @@
 import React from "react";
+import ProFastLogo from "./ProfastLogo";
 
 const Navbar = () => {
-  return <div>nav </div>;
+  return <div>
+    <ProFastLogo/>
+     </div>;
 };
 
 export default Navbar;
