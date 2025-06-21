@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-fast-marquee": "^1.6.5",
     "react-responsive-carousel": "^3.2.23"
   },
   "devDependencies": {

@@ -64,7 +64,7 @@ const Services = () => {
             <div
               key={index}
               className="rounded-2xl p-6 text-left 
-                bg-white hover:bg-lime-200"
+                bg-white hover:bg-lime-200 transition-all duration-300"
             >
               .{service.icon}
               <h3 className="text-[#00464f] font-semibold text-base md:text-xl mb-2 text-center">

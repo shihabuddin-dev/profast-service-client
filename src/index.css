@@ -28,7 +28,12 @@
   --color-secondary: #007eff;
   --color-accent: #706f6f;
 } */
-
+.bg-img{
+  background-image: url('../src/assets/be-a-merchant-bg.png');
+  background-repeat: no-repeat;
+  /* background-position: center;
+  background-size: cover; */
+}
 
 a.active {
   color: #3C65F5;

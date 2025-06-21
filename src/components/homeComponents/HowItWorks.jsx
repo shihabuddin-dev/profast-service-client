@@ -41,6 +41,7 @@ const HowItWorks = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {cards.map((card, idx) => (
             <div
+            data-aos="fade-up"
               key={idx}
               className="bg-white hover:bg-lime-200 rounded-2xl p-6 flex flex-col items-start text-left shadow-sm hover:shadow-md transition"
             >
