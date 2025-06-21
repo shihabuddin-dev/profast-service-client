@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-100 py-4 px-4 md:px-6">
-      <div className="max-w-7xl mx-auto flex items-center justify-between bg-white rounded-2xl px-4 md:px-8 py-3 shadow-sm relative">
+      <div className="max-w-7xl mx-auto flex items-center justify-between bg-white rounded-2xl px-4 md:px-6 py-3 shadow-sm relative">
         {/* Logo */}
         <div className="flex items-center z-20">
           <ProFastLogo />
