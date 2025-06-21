@@ -41,8 +41,8 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <div className="bg-gray-100 ">
-      <footer className="max-w-7xl mx-auto bg-gray-900 rounded-3xl  my-6 px-4 md:px-6 py-10 md:py-14 text-center flex flex-col items-center">
+    <div className="bg-gray-100 px-4 md:px-6 py-1">
+      <footer className="max-w-7xl mx-auto bg-gray-900 rounded-3xl  my-6 py-10 md:py-14 text-center flex flex-col items-center">
         <div className="flex flex-col items-center gap-2">
           <ProFastLogo color="white" />
           <p className="text-gray-300 text-sm md:text-base max-w-xl mt-2">
