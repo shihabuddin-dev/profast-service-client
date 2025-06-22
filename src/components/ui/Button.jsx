@@ -18,7 +18,7 @@ const Button = ({
       "flex items-center bg-[#CAEB66] text-gray-900 rounded-lg px-5 py-2 gap-2 shadow-none hover:bg-[#CAEB66]";
   } else if (variant === "round") {
     styles +=
-      "w-full flex items-center justify-center gap-2 bg-gray-100 py-2 rounded-lg font-medium text-gray-700 hover:bg-gray-200 transition";
+      "w-full flex items-center justify-center gap-2 bg-[#CAEB66] py-2 rounded-full px-5 font-medium text-gray-700 hover:bg-gray-200 transition";
   } else if (variant === "google") {
     styles +=
       "w-full flex items-center justify-center gap-2 bg-gray-100 py-2 rounded-lg font-medium text-gray-700 hover:bg-gray-200 transition";

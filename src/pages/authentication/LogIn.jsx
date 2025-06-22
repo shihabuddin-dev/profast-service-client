@@ -1,8 +1,7 @@
-import React from "react";
 import { useForm } from "react-hook-form";
-import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import Button from "../../components/ui/Button";
+import SocialLogin from "./SocialLogin";
 
 const LogIn = () => {
   const {
@@ -54,7 +53,7 @@ const LogIn = () => {
           )}
           {errors.password?.type === "minLength" && (
             <span className="text-red-500 text-xs">
-              Password Min Length is 6 Character
+              Password Min Length is 6 Character or Longer
             </span>
           )}
           {errors.password?.type === "maxLength" && (
@@ -64,9 +63,12 @@ const LogIn = () => {
           )}
 
           <div className="flex justify-between items-center mb-4">
-            <span className="text-gray-400 text-sm cursor-pointer hover:underline">
+            <Link
+              to="/forgetPassword"
+              className="text-gray-400 text-sm cursor-pointer hover:underline"
+            >
               Forget Password?
-            </span>
+            </Link>
           </div>
           <Button variant="secondary" type="submit" className="w-full mb-4">
             Continue
@@ -81,15 +83,7 @@ const LogIn = () => {
             Register
           </Link>
         </div>
-        <div className="flex items-center mb-4">
-          <div className="flex-grow h-px bg-gray-200" />
-          <span className="mx-2 text-gray-400 text-sm">Or</span>
-          <div className="flex-grow h-px bg-gray-200" />
-        </div>
-        <Button variant="google" className="w-full mb-4">
-          <FcGoogle className="text-xl" />
-          Login with google
-        </Button>
+        <SocialLogin />
       </div>
     </div>
   );

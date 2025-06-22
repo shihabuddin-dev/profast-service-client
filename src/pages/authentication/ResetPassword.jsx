@@ -1,9 +1,6 @@
 import { Link } from "react-router";
 import Button from "../../components/ui/Button";
 import Swal from "sweetalert2";
-import { MdLockReset } from "react-icons/md";
-import resetAnimation from "../../assets/lotti/reset-password.json";
-import Lottie from "lottie-react";
 import useAuth from "../../hooks/useAuth";
 
 const ResetPassword = () => {
@@ -60,51 +57,35 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="flex gap-4 flex-col md:flex-row justify-center items-center max-w-5xl">
-      <title>Reset Password || Career Code</title>
-      <div className="flex-1">
-        <Lottie
-          animationData={resetAnimation}
-          className="w-full h-[200px] md:h-[300px]"
-        ></Lottie>
-      </div>
-      <div className="flex-1 bg-base-100 rounded p-6 sm:p-8 md:p-10 w-full max-w-md border-2 border-secondary">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-6 flex justify-center items-center gap-3">
-          <MdLockReset className="text-primary" />
-          Reset Password
-        </h2>
-        <p className="text-center text-sm mb-6">
-          Enter your email address below and we'll send you a link to reset your
-          password.
-        </p>
-        <form onSubmit={handleResetPassword} className="space-y-4">
-          {/* Email */}
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-1">
-              Email Address
+    <div>
+      <div className="flex items-center justify-center">
+        <div className="bg-white rounded-xl shadow-md p-8 w-full max-w-md">
+          <h2 className="text-3xl font-bold mb-2">Reset Password</h2>
+          <p className="mb-6 text-gray-700">Reset Your Password</p>
+
+          <form onSubmit={handleResetPassword}>
+            <label className="block text-sm font-semibold mb-1" htmlFor="email">
+              Email
             </label>
             <input
-              id="email"
               type="email"
-              name="email"
-              placeholder="Enter Your Email"
-              className="w-full border-2 border-base-content/20 px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary transition duration-200 bg-base-100 text-base-content"
+              placeholder="Email"
+              className="w-full mb-4 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-200"
             />
-          </div>
-
-          {/* Submit Button */}
-          <Button type="submit" className="w-full mt-2 py-2">
-            Send Reset Link
-          </Button>
-
-          {/* Redirect to Login */}
-          <div className="mt-2 text-center text-sm">
+            <Button variant="secondary" type="submit" className="w-full mb-4">
+              Continue
+            </Button>
+          </form>
+          <div className="text-sm text-gray-500 mb-4 text-center">
             Remember your password?{" "}
-            <Link to="/signin" className="text-primary underline font-medium">
-              Sign In
+            <Link
+              to="/login"
+              className="text-lime-600 font-semibold hover:underline"
+            >
+              Login
             </Link>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
