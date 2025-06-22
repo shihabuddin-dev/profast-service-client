@@ -6,6 +6,8 @@ import LogIn from "../pages/authentication/LogIn";
 import Register from "../pages/authentication/Register";
 import ResetPassword from "../pages/authentication/ResetPassword";
 import Coverage from "../pages/coverage/Coverage";
+import PrivateRoutes from "./PrivateRoutes";
+import MyProfile from "../pages/myprofile/MyProfile";
 
 const router = createBrowserRouter([
   {
@@ -17,22 +19,22 @@ const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: 'coverage',
-        Component: Coverage
-
-      }
+        path: "coverage",
+        Component: Coverage,
+        loader: () => fetch("./warehouses.json"),
+      },
 
       //  loader: () => fetch(`${import.meta.env.VITE_API_URL}/recipes`),
 
       // private routes
-      // {
-      //   path: "/my-profile",
-      //   element: (
-      //     <PrivateRoutes>
-      //       <MyProfile />
-      //     </PrivateRoutes>
-      //   ),
-      // },
+      {
+        path: "/my-profile",
+        element: (
+          <PrivateRoutes>
+            <MyProfile />
+          </PrivateRoutes>
+        ),
+      },
     ],
   },
   {
@@ -40,15 +42,15 @@ const router = createBrowserRouter([
     Component: AuthLayout,
     children: [
       {
-        path: "login", 
+        path: "login",
         Component: LogIn,
       },
       {
-        path: "register", 
+        path: "register",
         Component: Register,
       },
       {
-        path: "forgetPassword", 
+        path: "forgetPassword",
         Component: ResetPassword,
       },
     ],

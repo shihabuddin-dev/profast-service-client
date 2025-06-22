@@ -37,21 +37,20 @@ const MyProfile = () => {
   };
   return (
     <div className="flex justify-center items-center min-h-[70vh]">
-      <title>Profile || Career Code</title>
-      <div className="card w-full max-w-md bg-base-100 shadow-sm border-t-4 border-primary p-6">
+      <div className="card w-full max-w-md bg-base-100 shadow-sm border-t-4 border-[#CAEB66] p-6">
         <div className="flex flex-col items-center gap-3">
           <div className="avatar">
-            <div className="w-24 h-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <div className="w-24 h-24 rounded-full ring ring-[#CAEB66] ring-offset-base-100 ring-offset-2">
               <img
                 src={user.photoURL || "/src/assets/user-logo.png"}
                 alt="User"
               />
             </div>
           </div>
-          <h2 className="text-2xl font-bold text-primary mb-1">
-            {user.displayName || "User Name"}
+          <h2 className="text-2xl font-semibold mb-1">
+            {user.displayName || "Hi, Guest"}
           </h2>
-          <span className="badge badge-outline badge-primary mb-2">
+          <span className="badge badge-outline mb-2">
             {user.email}
           </span>
         </div>
@@ -80,7 +79,7 @@ const MyProfile = () => {
           <div className="flex items-center gap-2">
             <span className="font-semibold">Email Verified:</span>
             <span
-              className={user.emailVerified ? "text-green-600" : "text-red-500"}
+              className={user.emailVerified ? "text-[#6e8624]" : "text-red-500"}
             >
               {user.emailVerified ? "Yes" : "No"}
             </span>
@@ -89,7 +88,7 @@ const MyProfile = () => {
         <div className="divider"></div>
         <div className="flex flex-col gap-2 items-center">
           <Button onClick={handleLogOut} variant="danger">
-            Sign Out
+            Log Out
           </Button>
         </div>
       </div>

@@ -8,7 +8,7 @@ const Button = ({
   className = "",
   ...props
 }) => {
-  let styles = "text-sm transition duration-300 ease-in-out";
+  let styles = "text-sm font-medium transition duration-300 ease-in-out";
 
   if (variant === "primary") {
     styles +=
@@ -26,7 +26,7 @@ const Button = ({
     styles +=
       "flex items-center border-[#CAEB66] border-1 text-[#CAEB66] font-semibold rounded-full px-5 py-2 gap-2 shadow-none hover:bg-[#CAEB66] hover:text-black";
   } else if (variant === "danger") {
-    styles += "bg-red-600 text-white hover:bg-red-500";
+    styles += "flex items-center bg-red-500 text-white rounded-lg px-5 py-2 gap-2 shadow-none hover:bg-red-600";
   } else {
     styles += "bg-gray-200 text-black";
   }

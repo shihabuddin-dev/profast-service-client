@@ -12,7 +12,7 @@ const PrivateRoutes = ({ children }) => {
   }
   // if user don't found login so sent to login pages to login
   if (!user) {
-    return <Navigate state={location?.pathname} to="/signin" />;
+    return <Navigate state={location?.pathname} to="/login" />;
   }
 
   return children;

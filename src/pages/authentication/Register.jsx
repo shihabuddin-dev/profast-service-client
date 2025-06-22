@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import SocialLogin from "./SocialLogin";
 
 const Register = () => {
+  const { setUser,createUser } = useAuth();
   // react hook form validation
   const {
     register,
@@ -12,13 +13,11 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  // firebase
-  const { createUser } = useAuth();
 
   const onSubmit = (data) => {
     createUser(data.email, data.password)
       .then((result) => {
-        console.log(result);
+        setUser(result)
       })
       .catch((error) => {
         console.log(error);

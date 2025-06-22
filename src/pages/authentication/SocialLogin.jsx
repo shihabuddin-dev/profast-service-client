@@ -3,11 +3,11 @@ import Button from "../../components/ui/Button";
 import useAuth from "../../hooks/useAuth";
 
 const SocialLogin = () => {
-  const { createUserWithGoogle } = useAuth();
+  const { setUser,createUserWithGoogle } = useAuth();
   const handleGoogleSignIn = () => {
     createUserWithGoogle()
       .then((result) => {
-        console.log(result.user);
+        setUser(result.user)
       })
       .catch((err) => {
         console.log(err);

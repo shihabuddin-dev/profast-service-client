@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import ProFastLogo from "./ProFastLogo";
 import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
 import Button from "../ui/Button";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const navLinks = [
   { to: "/services", label: "Services" },
@@ -14,6 +16,38 @@ const navLinks = [
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { user, signOutUser } = useAuth();
+  
+   // logout user
+    const handleLogOut = () => {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Sign out!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          signOutUser();
+          Swal.fire({
+            title: "Sign out!",
+            text: "You have been Sign out.",
+            icon: "success",
+          })
+            .then(() => {})
+            .catch((error) => {
+              console.log(error);
+              Swal.fire({
+                title: "Error!",
+                text: "Sign Out failed.",
+                icon: "error",
+              });
+            });
+        }
+      });
+    };
 
   return (
     <nav className="bg-gray-100 py-4 px-4 md:px-6">
@@ -41,7 +75,15 @@ const Navbar = () => {
         </div>
         {/* Buttons */}
         <div className="hidden md:flex items-center gap-3 md:gap-4 z-20">
-          <Button>Sign In</Button>
+          {user ? (
+            <Button onClick={handleLogOut} variant="danger">
+              Log Out
+            </Button>
+          ) : (
+            <Link to="/login">
+              <Button>Log In</Button>
+            </Link>
+          )}
           <Button variant="secondary">Be a rider</Button>
           <span className="flex items-center justify-center bg-gray-900 rounded-full w-8 h-8 ml-2">
             <FiArrowUpRight className="text-lime-200 text-lg" />
@@ -95,9 +137,20 @@ const Navbar = () => {
                 {link.label}
               </NavLink>
             ))}
-            <Button className="mt-4 w-full" onClick={() => setMenuOpen(false)}>
-              Sign In
-            </Button>
+            {user ? (
+              <Button onClick={handleLogOut} variant="danger">
+                Log Out
+              </Button>
+            ) : (
+              <Link to="/login">
+                <Button
+                  className="mt-4 w-full"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Log In
+                </Button>
+              </Link>
+            )}
             <Button
               variant="secondary"
               className="w-full"
