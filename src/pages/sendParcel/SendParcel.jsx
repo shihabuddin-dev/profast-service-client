@@ -98,7 +98,6 @@ const SendParcel = () => {
                     creation_date: new Date().toISOString(),
                     tracking_id: generateTrackingID(),
                 };
-
                 axiosSecure.post('/parcels', parcelData)
                     .then(res => {
                         if (res.data.insertedId) {

@@ -6,46 +6,50 @@ import { Link, NavLink } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
-const navLinks = [
-  { to: "/", label: "Home" },
-  { to: "/coverage", label: "Coverage" },
-  { to: "/sendParcel", label: "Send A Parcel" },
-];
-
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { user, signOutUser } = useAuth();
-  
-   // logout user
-    const handleLogOut = () => {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Log Out!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          signOutUser();
-          Swal.fire({
-            title: "Log Out!",
-            text: "You have been Log Out.",
-            icon: "success",
-          })
-            .then(() => {})
-            .catch((error) => {
-              console.log(error);
-              Swal.fire({
-                title: "Error!",
-                text: "Log Out failed.",
-                icon: "error",
-              });
+
+  // Only show Dashboard if user is logged in
+  const navLinks = [
+    { to: "/", label: "Home" },
+    { to: "/coverage", label: "Coverage" },
+    { to: "/sendParcel", label: "Send A Parcel" },
+    ...(user ? [
+      { to: "/dashboard", label: "Dashboard" }
+    ] : []),
+  ];
+
+  // logout user
+  const handleLogOut = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Log Out!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        signOutUser();
+        Swal.fire({
+          title: "Log Out!",
+          text: "You have been Log Out.",
+          icon: "success",
+        })
+          .then(() => {})
+          .catch((error) => {
+            console.log(error);
+            Swal.fire({
+              title: "Error!",
+              text: "Log Out failed.",
+              icon: "error",
             });
-        }
-      });
-    };
+          });
+      }
+    });
+  };
 
   return (
     <nav className="bg-gray-100 py-4 px-4 md:px-6">

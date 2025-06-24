@@ -9,6 +9,8 @@ import Coverage from "../pages/coverage/Coverage";
 import PrivateRoutes from "./PrivateRoutes";
 import MyProfile from "../pages/myprofile/MyProfile";
 import SendParcel from "../pages/sendParcel/SendParcel";
+import DashboardLayout from "../layout/DashBoardLayout";
+import MyParcels from "../pages/dashboard/MyParcels";
 
 const router = createBrowserRouter([
   {
@@ -63,7 +65,19 @@ const router = createBrowserRouter([
         path: "forgetPassword",
         Component: ResetPassword,
       },
+
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <PrivateRoutes><DashboardLayout /> </PrivateRoutes>,
+    children:[
+      {
+        path: 'myParcels',
+        Component: MyParcels
+
+      }
+    ] 
   },
 ]);
 
