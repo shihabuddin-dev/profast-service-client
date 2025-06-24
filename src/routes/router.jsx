@@ -8,6 +8,7 @@ import ResetPassword from "../pages/authentication/ResetPassword";
 import Coverage from "../pages/coverage/Coverage";
 import PrivateRoutes from "./PrivateRoutes";
 import MyProfile from "../pages/myprofile/MyProfile";
+import SendParcel from "../pages/sendParcel/SendParcel";
 
 const router = createBrowserRouter([
   {
@@ -21,14 +22,23 @@ const router = createBrowserRouter([
       {
         path: "coverage",
         Component: Coverage,
-        loader: () => fetch("./warehouses.json"),
+        loader: () => fetch("./serviceCenter.json"),
       },
 
       //  loader: () => fetch(`${import.meta.env.VITE_API_URL}/recipes`),
 
       // private routes
       {
-        path: "/my-profile",
+        path: "sendParcel",
+        element: (
+          <PrivateRoutes>
+            <SendParcel />
+          </PrivateRoutes>
+        ),
+        loader: () => fetch("./serviceCenter.json"),
+      },
+      {
+        path: "my-profile",
         element: (
           <PrivateRoutes>
             <MyProfile />

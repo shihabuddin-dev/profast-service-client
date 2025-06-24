@@ -41,7 +41,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <div data-aos="zoom-in" className="bg-gray-100 px-4 md:px-6 py-1">
+    <div className="bg-gray-100 px-4 md:px-6 py-1">
       <footer className="max-w-7xl mx-auto bg-gray-900 rounded-3xl px-4 my-6 py-10 md:py-14 text-center flex flex-col items-center">
         <div className="flex flex-col items-center gap-2">
           <ProFastLogo color="white" />

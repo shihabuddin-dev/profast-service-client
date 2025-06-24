@@ -7,11 +7,9 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const navLinks = [
-  { to: "/services", label: "Services" },
+  { to: "/", label: "Home" },
   { to: "/coverage", label: "Coverage" },
-  { to: "/about", label: "About Us" },
-  { to: "/pricing", label: "Pricing" },
-  { to: "/be-a-rider", label: "Be a Rider" },
+  { to: "/sendParcel", label: "Send A Parcel" },
 ];
 
 const Navbar = () => {
@@ -27,13 +25,13 @@ const Navbar = () => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Sign out!",
+        confirmButtonText: "Yes, Log Out!",
       }).then((result) => {
         if (result.isConfirmed) {
           signOutUser();
           Swal.fire({
-            title: "Sign out!",
-            text: "You have been Sign out.",
+            title: "Log Out!",
+            text: "You have been Log Out.",
             icon: "success",
           })
             .then(() => {})
@@ -41,7 +39,7 @@ const Navbar = () => {
               console.log(error);
               Swal.fire({
                 title: "Error!",
-                text: "Sign Out failed.",
+                text: "Log Out failed.",
                 icon: "error",
               });
             });
