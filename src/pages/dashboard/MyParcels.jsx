@@ -16,7 +16,6 @@ const MyParcels = () => {
         }
     })
 
-    console.log(parcels);
 
     const handleView = (id) => {
         console.log("View parcel", id);
