@@ -1,15 +1,16 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Button from "../../components/ui/Button";
 import { useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Spinner from "../../components/ui/Spinner";
-
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const PaymentForm = () => {
     const { user } = useAuth()
+    const navigate = useNavigate()
     const stripe = useStripe();
     const elements = useElements();
     const [error, setError] = useState('')
@@ -29,7 +30,6 @@ const PaymentForm = () => {
     }
     const amount = parcelInfo.cost;
     const amountInCents = amount * 100;
-    console.log(amountInCents);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -49,36 +49,66 @@ const PaymentForm = () => {
 
         if (error) {
             setError(error.message)
-        } else {
-            setError('')
-            console.log('[PaymentMethod]', paymentMethod);
         }
-        // step-2: payment intent
-        const res = await axiosSecure.post('/create-payment-intent', {
-            amountInCents,
-            parcelId
-        })
-        const clientSecret = res.data.clientSecret
 
-        // step-3: confirm payment
-        const result = await stripe.confirmCardPayment(clientSecret, {
-            payment_method: {
-                card: elements.getElement(CardElement),
-                billing_details: {
-                    name: user.displayName,
-                    email: user.email
-                },
-            },
-        });
-        if (result.error) {
-            setError(result.error.message);
-        }
         else {
-            if (result.paymentIntent.status === 'succeeded') {
-                console.log('Payment Succeeded')
-                console.log(result)
+            setError('')
+            console.log('PaymentMethod', paymentMethod);
+
+            // step-2: payment intent
+            const res = await axiosSecure.post('/create-payment-intent', {
+                amountInCents,
+                parcelId
+            })
+            const clientSecret = res.data.clientSecret
+
+            // step-3: confirm payment
+            const result = await stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: elements.getElement(CardElement),
+                    billing_details: {
+                        name: user.displayName,
+                        email: user.email
+                    },
+                },
+            });
+            if (result.error) {
+                setError(result.error.message);
+            }
+            else {
+                setError('')
+                if (result.paymentIntent.status === 'succeeded') {
+                    console.log('Payment Succeeded')
+                    const transactionId = result.paymentIntent.id;
+                    // setp-4: mark parcel paid also create payment histotry
+                    const paymentData = {
+                        parcelId,
+                        email: user.email,
+                        amount,
+                        transactionId: transactionId,
+                        paymentMethod: result.paymentIntent.payment_method_types
+                    }
+                    // posting data to db using axious secure
+                    const paymentRes = await axiosSecure.post('/payments', paymentData)
+                    if (paymentRes.data.insertedId) {
+                        //  Show SweetAlert with transaction ID
+                        await Swal.fire({
+                            icon: 'success',
+                            title: 'Payment Successful!',
+                            html: `<strong>Transaction ID:</strong> <code>${transactionId}</code>`,
+                            confirmButtonText: 'Go to My Parcels',
+                        });
+
+                        //  Redirect to /myParcels
+                        navigate('/dashboard/myParcels');
+
+
+                    }
+
+                }
             }
         }
+
 
     }
 
