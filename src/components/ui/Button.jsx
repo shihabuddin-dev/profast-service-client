@@ -8,7 +8,7 @@ const Button = ({
   className = "",
   ...props
 }) => {
-  let styles = "text-sm font-medium transition duration-300 ease-in-out";
+  let styles = "text-sm font-semibold transition duration-300 ease-in-out";
 
   if (variant === "primary") {
     styles +=

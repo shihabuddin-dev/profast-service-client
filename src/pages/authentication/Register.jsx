@@ -1,11 +1,15 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import Button from "../../components/ui/Button";
 import useAuth from "../../hooks/useAuth";
 import SocialLogin from "./SocialLogin";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const { setUser,createUser } = useAuth();
+  const { setUser, createUser } = useAuth();
+  const location = useLocation()
+  const navigate = useNavigate()
+  const form = location.state?.form || '/'
   // react hook form validation
   const {
     register,
@@ -18,6 +22,13 @@ const Register = () => {
     createUser(data.email, data.password)
       .then((result) => {
         setUser(result)
+        navigate(form)
+        Swal.fire({
+          icon: "success",
+          title: "Registration Successfull",
+          showConfirmButton: false,
+          timer: 1500
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -90,7 +101,7 @@ const Register = () => {
             Login
           </Link>
         </div>
-        <SocialLogin/>
+        <SocialLogin />
       </div>
     </div>
   );

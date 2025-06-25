@@ -1,11 +1,15 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import Button from "../../components/ui/Button";
 import SocialLogin from "./SocialLogin";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const LogIn = () => {
-  const { setUser,signInUser } = useAuth();
+  const { setUser, signInUser } = useAuth();
+  const location = useLocation()
+  const navigate = useNavigate()
+  const form = location.state?.form || '/'
   const {
     register,
     handleSubmit,
@@ -17,6 +21,13 @@ const LogIn = () => {
       .then((userCredential) => {
         const currentUser = userCredential.user;
         setUser(currentUser)
+        navigate(form)
+        Swal.fire({
+          icon: "success",
+          title: "Logged in Successfull",
+          showConfirmButton: false,
+          timer: 1500
+        });
       })
       .catch((err) => {
         console.log(err);
