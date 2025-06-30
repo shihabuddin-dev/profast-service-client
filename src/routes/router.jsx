@@ -15,6 +15,7 @@ import Payment from "../pages/dashboard/Payment";
 import PaymentHistory from "../pages/dashboard/PaymentHistory";
 import TrackParcel from "../pages/dashboard/TrackParcel";
 import BeARider from "../pages/beARider/BeARider";
+import Spinner from "../components/ui/Spinner";
 
 const router = createBrowserRouter([
   {
@@ -27,8 +28,9 @@ const router = createBrowserRouter([
       },
       {
         path: "coverage",
-        Component: Coverage,
+        hydrateFallbackElement: <Spinner/>,
         loader: () => fetch("./serviceCenter.json"),
+        Component: Coverage,
       },
 
       //  loader: () => fetch(`${import.meta.env.VITE_API_URL}/recipes`),
@@ -36,17 +38,20 @@ const router = createBrowserRouter([
       // private routes
       {
         path: "sendParcel",
+        hydrateFallbackElement: <Spinner/>,
+        loader: () => fetch("./serviceCenter.json"),
         element: (
           <PrivateRoutes>
             <SendParcel />
           </PrivateRoutes>
         ),
-        loader: () => fetch("./serviceCenter.json"),
       },
 
       {
         path: "beARider",
-        element: <PrivateRoutes><BeARider /></PrivateRoutes>
+        hydrateFallbackElement: <Spinner/>,
+        loader: () => fetch("./serviceCenter.json"),
+        element: <PrivateRoutes><BeARider /></PrivateRoutes>,
       }
     ],
   },
