@@ -18,6 +18,7 @@ import BeARider from "../pages/beARider/BeARider";
 import Spinner from "../components/ui/Spinner";
 import PendingRiders from "../pages/dashboard/PendingRiders";
 import ActiveRiders from "../pages/dashboard/ActiveRiders";
+import MakeAdmin from "../pages/dashboard/MakeAdmin";
 
 const router = createBrowserRouter([
   {
@@ -112,6 +113,10 @@ const router = createBrowserRouter([
       {
         path: "active-riders",
         Component: ActiveRiders,
+      },
+      {
+        path: "makeAdmin",
+        Component: MakeAdmin,
       },
     ]
   },

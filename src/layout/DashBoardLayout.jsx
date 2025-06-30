@@ -1,6 +1,5 @@
-import React from 'react';
 import { NavLink, Outlet } from 'react-router';
-import { FaHome, FaBoxOpen, FaMoneyCheckAlt, FaUserEdit, FaSearchLocation } from 'react-icons/fa';
+import { FaHome, FaBoxOpen, FaMoneyCheckAlt, FaUserEdit, FaSearchLocation, FaUserShield } from 'react-icons/fa';
 import ProFastLogo from '../components/shared/ProFastLogo';
 import { FaUserCheck, FaUserClock } from 'react-icons/fa6';
 
@@ -30,9 +29,6 @@ const DashboardLayout = () => {
                         </label>
                     </div>
                     <div className="mx-2 flex-1 px-2 lg:hidden">Dashboard</div>
-
-
-
                 </div>
                 {/* Page content here  in outlate */}
              <section className='py-10'>   <Outlet></Outlet></section>
@@ -85,6 +81,13 @@ const DashboardLayout = () => {
                         <NavLink to="/dashboard/pending-riders">
                             <FaUserClock className="inline-block mr-2" />
                             Pending Riders
+                        </NavLink>
+                    </li>
+                    {/* admin routes */}
+                    <li>
+                        <NavLink to="/dashboard/makeAdmin">
+                            <FaUserShield className="inline-block mr-2" />
+                            Make Admin
                         </NavLink>
                     </li>
                 </ul>
