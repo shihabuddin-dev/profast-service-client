@@ -36,7 +36,7 @@ const MyProfile = () => {
     });
   };
   return (
-    <div className="flex justify-center items-center min-h-[70vh]">
+    <div className="flex justify-center items-center">
       <div className="card w-full max-w-md bg-base-100 shadow-sm border-t-4 border-[#CAEB66] p-6">
         <div className="flex flex-col items-center gap-3">
           <div className="avatar">

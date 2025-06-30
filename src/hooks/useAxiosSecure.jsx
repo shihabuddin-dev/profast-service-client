@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
 });
 
 const useAxiosSecure = () => {
-  const { user, signOutUser } = useAuth();
+  const { user } = useAuth();
 
   // interceptor request
   axiosInstance.interceptors.request.use((config) => {
@@ -16,19 +16,19 @@ const useAxiosSecure = () => {
   });
 
   // interceptor response
-  axiosInstance.interceptors.response.use(
-    (response) => {
-      return response;
-    },
-    (error) => {
-      if (error.status === 401 || error.status === 403) {
-        signOutUser()
-          .then(() => console.log("sign out user for status code 401"))
-          .catch((error) => console.log(error));
-      }
-      return Promise.reject(error);
-    }
-  );
+  // axiosInstance.interceptors.response.use(
+  //   (response) => {
+  //     return response;
+  //   },
+  //   (error) => {
+  //     if (error.status === 401 || error.status === 403) {
+  //       signOutUser()
+  //         .then(() => console.log("sign out user for status code 401"))
+  //         .catch((error) => console.log(error));
+  //     }
+  //     return Promise.reject(error);
+  //   }
+  // );
 
   return axiosInstance;
 };

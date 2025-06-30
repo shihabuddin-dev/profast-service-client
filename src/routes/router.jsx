@@ -14,6 +14,7 @@ import MyParcels from "../pages/dashboard/MyParcels";
 import Payment from "../pages/dashboard/Payment";
 import PaymentHistory from "../pages/dashboard/PaymentHistory";
 import TrackParcel from "../pages/dashboard/TrackParcel";
+import BeARider from "../pages/beARider/BeARider";
 
 const router = createBrowserRouter([
   {
@@ -42,14 +43,11 @@ const router = createBrowserRouter([
         ),
         loader: () => fetch("./serviceCenter.json"),
       },
+
       {
-        path: "my-profile",
-        element: (
-          <PrivateRoutes>
-            <MyProfile />
-          </PrivateRoutes>
-        ),
-      },
+        path: "beARider",
+        element: <PrivateRoutes><BeARider /></PrivateRoutes>
+      }
     ],
   },
   {
@@ -69,12 +67,13 @@ const router = createBrowserRouter([
         Component: ResetPassword,
       },
 
+
     ],
   },
   {
     path: "/dashboard",
     element: <PrivateRoutes><DashboardLayout /> </PrivateRoutes>,
-    children:[
+    children: [
       {
         path: 'myParcels',
         Component: MyParcels
@@ -95,7 +94,11 @@ const router = createBrowserRouter([
         Component: TrackParcel,
 
       },
-    ] 
+      {
+        path: "profile",
+        Component: MyProfile,
+      },
+    ]
   },
 ]);
 

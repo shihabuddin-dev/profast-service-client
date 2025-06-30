@@ -32,7 +32,7 @@ const DashboardLayout = () => {
 
                 </div>
                 {/* Page content here */}
-                <Outlet></Outlet>
+             <section className='py-10'>   <Outlet></Outlet></section>
                 {/* Page content here */}
 
             </div>

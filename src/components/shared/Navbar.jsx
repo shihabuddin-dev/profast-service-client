@@ -38,7 +38,7 @@ const Navbar = () => {
           text: "You have been Log Out.",
           icon: "success",
         })
-          .then(() => {})
+          .then(() => { })
           .catch((error) => {
             console.log(error);
             Swal.fire({
@@ -65,8 +65,7 @@ const Navbar = () => {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `text-gray-700 text-sm hover:text-black transition${
-                  isActive ? " font-bold text-black" : ""
+                `text-gray-700 text-sm hover:text-black transition${isActive ? " font-bold text-black" : ""
                 }`
               }
               onClick={() => setMenuOpen(false)}
@@ -86,7 +85,7 @@ const Navbar = () => {
               <Button>Log In</Button>
             </Link>
           )}
-          <Button variant="secondary">Be a rider</Button>
+          <Link to='/beARider'>  <Button variant="secondary">Be a rider</Button></Link>
           <span className="flex items-center justify-center bg-gray-900 rounded-full w-8 h-8 ml-2">
             <FiArrowUpRight className="text-lime-200 text-lg" />
           </span>
@@ -101,18 +100,16 @@ const Navbar = () => {
         </button>
         {/* Mobile Menu Overlay */}
         <div
-          className={`fixed inset-0 bg-black bg-opacity-30 transition-opacity duration-300 ${
-            menuOpen
+          className={`fixed inset-0 bg-black bg-opacity-30 transition-opacity duration-300 ${menuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
-          } z-40`}
+            } z-40`}
           onClick={() => setMenuOpen(false)}
         />
         {/* Mobile Menu Drawer */}
         <div
-          className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
-            menuOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+          className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ${menuOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
         >
           <div className="flex items-center justify-between px-4 py-4 border-b">
             <ProFastLogo />
@@ -130,8 +127,7 @@ const Navbar = () => {
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
-                  `text-gray-700 text-base font-medium hover:text-black transition${
-                    isActive ? " font-bold text-black" : ""
+                  `text-gray-700 text-base font-medium hover:text-black transition${isActive ? " font-bold text-black" : ""
                   }`
                 }
                 onClick={() => setMenuOpen(false)}
@@ -153,13 +149,13 @@ const Navbar = () => {
                 </Button>
               </Link>
             )}
-            <Button
+            <Link to='/beARider'> <Button
               variant="secondary"
               className="w-full"
               onClick={() => setMenuOpen(false)}
             >
               Be a rider
-            </Button>
+            </Button></Link>
             <span className="flex items-center justify-center bg-gray-900 rounded-full w-8 h-8 ml-2">
               <FiArrowUpRight className="text-lime-200 text-lg" />
             </span>
