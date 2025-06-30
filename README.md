@@ -1,12 +1,52 @@
-# React + Vite
+# Pro Fast Service - Version 1.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ProFast is Modern parcel delivery web application built with **React** and **Vite**.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🚚 Send parcels easily with a user-friendly form
+- 📦 Live parcel tracking
+- 🗺️ Bangladesh map with service coverage
+- 🏢 Merchant and customer dashboard (only visible when logged in)
+- 📞 24/7 call center support
+- 🔒 Secure authentication (login/register)
+- 📱 Fully responsive design for all devices
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [SweetAlert2](https://sweetalert2.github.io/)
+- [Leaflet](https://leafletjs.com/) (for map)
+- [React Router](https://reactrouter.com/)
+
+## Getting Started
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/shihabuddin-dev/pro-fast-service
+   cd pro-fast-service
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Contributing
+
+We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) before getting started.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+Made with ❤️ by [Shihab Uddin](https://shihab-dev.web.app/)
