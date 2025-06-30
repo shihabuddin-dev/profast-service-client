@@ -31,8 +31,10 @@ const DashboardLayout = () => {
                     </div>
                     <div className="mx-2 flex-1 px-2 lg:hidden">Dashboard</div>
 
+
+
                 </div>
-                {/* Page content here */}
+                {/* Page content here  in outlate */}
              <section className='py-10'>   <Outlet></Outlet></section>
                 {/* Page content here */}
 
