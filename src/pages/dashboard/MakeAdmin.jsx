@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { FaSearch, FaUserShield, FaUserTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
+import Button from "../../components/ui/Button";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MakeAdmin = () => {
-    const axiosSecure = useAxiosSecure();
+const axiosSecure = useAxiosSecure()
     const [emailQuery, setEmailQuery] = useState("");
 
     const {
@@ -98,9 +99,10 @@ const MakeAdmin = () => {
                                         </span>
                                     </td>
                                     <td>
-                                        <button
+                                        <Button
+                                        variant="secondary"
                                             onClick={() => handleRoleChange(u._id, u.role || "user")}
-                                            className={`btn btn-sm text-black ${u.role === "admin" ? "btn-error" : "btn-primary"
+                                            className={`btn border-none btn-sm text-black ${u.role === "admin" ? "btn-error" : "btn-primary"
                                                 }`}
                                         >
                                             {u.role === "admin" ? (
@@ -114,7 +116,7 @@ const MakeAdmin = () => {
                                                     Make Admin
                                                 </>
                                             )}
-                                        </button>
+                                        </Button>
                                     </td>
                                 </tr>
                             ))}

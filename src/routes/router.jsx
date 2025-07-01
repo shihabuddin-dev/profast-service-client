@@ -19,6 +19,8 @@ import Spinner from "../components/ui/Spinner";
 import PendingRiders from "../pages/dashboard/PendingRiders";
 import ActiveRiders from "../pages/dashboard/ActiveRiders";
 import MakeAdmin from "../pages/dashboard/MakeAdmin";
+import Forbidden from "../pages/forbidden/Forbidden";
+import AdminRoutes from "./AdminRoutes";
 
 const router = createBrowserRouter([
   {
@@ -31,9 +33,12 @@ const router = createBrowserRouter([
       },
       {
         path: "coverage",
-        hydrateFallbackElement: <Spinner/>,
+        hydrateFallbackElement: <Spinner />,
         loader: () => fetch("./serviceCenter.json"),
         Component: Coverage,
+      }, {
+        path: 'forbidden',
+        Component: Forbidden
       },
 
       //  loader: () => fetch(`${import.meta.env.VITE_API_URL}/recipes`),
@@ -41,7 +46,7 @@ const router = createBrowserRouter([
       // private routes
       {
         path: "sendParcel",
-        hydrateFallbackElement: <Spinner/>,
+        hydrateFallbackElement: <Spinner />,
         loader: () => fetch("./serviceCenter.json"),
         element: (
           <PrivateRoutes>
@@ -52,7 +57,7 @@ const router = createBrowserRouter([
 
       {
         path: "beARider",
-        hydrateFallbackElement: <Spinner/>,
+        hydrateFallbackElement: <Spinner />,
         loader: () => fetch("./serviceCenter.json"),
         element: <PrivateRoutes><BeARider /></PrivateRoutes>,
       }
@@ -108,15 +113,15 @@ const router = createBrowserRouter([
       },
       {
         path: "pending-riders",
-        Component: PendingRiders,
+        element: <AdminRoutes><PendingRiders /></AdminRoutes>
       },
       {
         path: "active-riders",
-        Component: ActiveRiders,
+        element: <AdminRoutes><ActiveRiders /></AdminRoutes>
       },
       {
         path: "makeAdmin",
-        Component: MakeAdmin,
+        element: <AdminRoutes><MakeAdmin /></AdminRoutes>
       },
     ]
   },

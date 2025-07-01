@@ -2,8 +2,11 @@ import { NavLink, Outlet } from 'react-router';
 import { FaHome, FaBoxOpen, FaMoneyCheckAlt, FaUserEdit, FaSearchLocation, FaUserShield } from 'react-icons/fa';
 import ProFastLogo from '../components/shared/ProFastLogo';
 import { FaUserCheck, FaUserClock } from 'react-icons/fa6';
+import useUserRole from '../hooks/useUserRole';
 
 const DashboardLayout = () => {
+    const { role, roleLoading } = useUserRole()
+    console.log(role)
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -31,7 +34,7 @@ const DashboardLayout = () => {
                     <div className="mx-2 flex-1 px-2 lg:hidden">Dashboard</div>
                 </div>
                 {/* Page content here  in outlate */}
-             <section className='py-10'>   <Outlet></Outlet></section>
+                <section className='py-10'>   <Outlet></Outlet></section>
                 {/* Page content here */}
 
             </div>
@@ -39,7 +42,7 @@ const DashboardLayout = () => {
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                     {/* Sidebar content here */}
-                    <ProFastLogo/>
+                    <ProFastLogo />
                     <li>
                         <NavLink to="/dashboard">
                             <FaHome className="inline-block mr-2" />
@@ -70,26 +73,30 @@ const DashboardLayout = () => {
                             Update Profile
                         </NavLink>
                     </li>
-                      {/* riders link */}
-                    <li>
-                        <NavLink to="/dashboard/active-riders">
-                            <FaUserCheck className="inline-block mr-2" />
-                            Active Riders
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/dashboard/pending-riders">
-                            <FaUserClock className="inline-block mr-2" />
-                            Pending Riders
-                        </NavLink>
-                    </li>
-                    {/* admin routes */}
-                    <li>
-                        <NavLink to="/dashboard/makeAdmin">
-                            <FaUserShield className="inline-block mr-2" />
-                            Make Admin
-                        </NavLink>
-                    </li>
+                    {/* riders link */}
+                    {
+                        !roleLoading && role === 'admin' && <>
+                            <li>
+                                <NavLink to="/dashboard/active-riders">
+                                    <FaUserCheck className="inline-block mr-2" />
+                                    Active Riders
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/pending-riders">
+                                    <FaUserClock className="inline-block mr-2" />
+                                    Pending Riders
+                                </NavLink>
+                            </li>
+                            {/* admin routes */}
+                            <li>
+                                <NavLink to="/dashboard/makeAdmin">
+                                    <FaUserShield className="inline-block mr-2" />
+                                    Make Admin
+                                </NavLink>
+                            </li>
+                        </>
+                    }
                 </ul>
             </div>
         </div>
