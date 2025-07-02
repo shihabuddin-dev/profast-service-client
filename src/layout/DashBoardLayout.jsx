@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from 'react-router';
 import { FaHome, FaBoxOpen, FaMoneyCheckAlt, FaUserEdit, FaSearchLocation, FaUserShield, FaTasks, FaCheckCircle } from 'react-icons/fa';
 import ProFastLogo from '../components/shared/ProFastLogo';
-import { FaMotorcycle, FaUserCheck, FaUserClock } from 'react-icons/fa6';
+import { FaMotorcycle, FaUserCheck, FaUserClock, FaWallet } from 'react-icons/fa6';
 import useUserRole from '../hooks/useUserRole';
 
 const DashboardLayout = () => {
@@ -87,6 +87,12 @@ const DashboardLayout = () => {
                                 <NavLink to="/dashboard/completed-deliveries">
                                     <FaCheckCircle className="inline-block mr-2" />
                                     Completed Deliveries
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/my-earnings">
+                                    <FaWallet className="inline-block mr-2" />
+                                    My Earnings
                                 </NavLink>
                             </li>
                         </>

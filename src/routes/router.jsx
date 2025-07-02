@@ -25,6 +25,7 @@ import AssignRider from "../pages/dashboard/AssignRider";
 import RiderRoute from "./RiderRoute";
 import PendingDeliveries from "../pages/dashboard/PendingDeliveries";
 import CompletedDeliveries from "../pages/dashboard/CompletedDeliveries";
+import MyEarnings from "../pages/dashboard/MyEarnings";
 
 const router = createBrowserRouter([
   {
@@ -123,6 +124,10 @@ const router = createBrowserRouter([
       {
         path: 'completed-deliveries',
         element: <RiderRoute><CompletedDeliveries/></RiderRoute>
+      },
+      {
+        path: 'my-earnings',
+        element: <RiderRoute><MyEarnings/></RiderRoute>
       },
 
       // admin routes
