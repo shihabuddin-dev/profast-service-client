@@ -27,11 +27,13 @@ import PendingDeliveries from "../pages/dashboard/PendingDeliveries";
 import CompletedDeliveries from "../pages/dashboard/CompletedDeliveries";
 import MyEarnings from "../pages/dashboard/MyEarnings";
 import DashboardHome from "../pages/dashboard/DashboardHome";
+import NotFound from "../pages/notFound/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement: <NotFound/>,
     children: [
       {
         index: true,
